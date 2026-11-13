@@ -1,0 +1,50 @@
+[
+  {
+    "source": "AlibabaPuHuiTi-3-45-Light.otf",
+    "web": "AlibabaPuHuiTi3-Light.woff",
+    "weight": 300,
+    "glyphs": 1030,
+    "bytes": 173860,
+    "source_sha256": "3d8dbfabdc4a145feeed8f9dcf36b880747bb69ae5671e2e78a4a79e13724af1",
+    "metadata": {
+      "0": "Copyright (c) 2020-2023 Alibaba (China) Co., Ltd. All rights reserved.",
+      "1": "Alibaba PuHuiTi 3.0",
+      "2": "45 Light",
+      "5": "Version 3.01",
+      "13": null,
+      "14": null
+    }
+  },
+  {
+    "source": "AlibabaPuHuiTi-3-55-Regular.otf",
+    "web": "AlibabaPuHuiTi3-Regular.woff",
+    "weight": 400,
+    "glyphs": 1030,
+    "bytes": 172004,
+    "source_sha256": "0d0b12d1ea1cbbc0bf152da7a39f2b02a385a6c3ee8b78475e50f1f31379a364",
+    "metadata": {
+      "0": "Copyright (c) 2020-2023 Alibaba (China) Co., Ltd. All rights reserved.",
+      "1": "Alibaba PuHuiTi 3.0",
+      "2": "55 Regular",
+      "5": "Version 3.01",
+      "13": null,
+      "14": null
+    }
+  },
+  {
+    "source": "AlibabaPuHuiTi-3-65-Medium.otf",
+    "web": "AlibabaPuHuiTi3-Medium.woff",
+    "weight": 500,
+    "glyphs": 1030,
+    "bytes": 171028,
+    "source_sha256": "00cd19ccd391bba61515361eea87163ba079c4bf691fa63c59e280fda690ada4",
+    "metadata": {
+      "0": "Copyright (c) 2020-2023 Alibaba (China) Co., Ltd. All rights reserved.",
+      "1": "Alibaba PuHuiTi 3.0",
+      "2": "65 Medium",
+      "5": "Version 3.01",
+      "13": null,
+      "14": null
+    }
+  }
+]

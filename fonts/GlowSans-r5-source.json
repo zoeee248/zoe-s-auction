@@ -1,0 +1,18 @@
+[
+  {
+    "source": "GlowSansSC-Normal-Regular.otf",
+    "source_sha256": "ca7d34947401b2fa6dd4fd46676d970a8cc47a40ee60c022eb7dd5068bee67ff",
+    "source_url": "https://github.com/welai/glow-sans/releases/tag/v0.93",
+    "web": "GlowSansSC-Normal-Regular.woff",
+    "missing_cjk": [],
+    "bytes": 289116
+  },
+  {
+    "source": "GlowSansSC-Normal-Medium.otf",
+    "source_sha256": "56481618894253fb71427a097706f9a440806b4957a7381946dc6464b98aa192",
+    "source_url": "https://github.com/welai/glow-sans/releases/tag/v0.93",
+    "web": "GlowSansSC-Normal-Medium.woff",
+    "missing_cjk": [],
+    "bytes": 287184
+  }
+]
