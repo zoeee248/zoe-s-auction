@@ -2,7 +2,7 @@ const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/st
 const src=fs.readFileSync(require('node:path').resolve(__dirname,'../app.js'),'utf8');
 const code=src.slice(src.indexOf('function carouselRoute()'),src.indexOf('function refreshProjectLink()'));
 let clock=0,serial=0,timers=new Map(),changes=[];
-const ctx={route:'home',hoveredObject:null,document:{hidden:false},heroVisible:true,reduceMotion:{matches:false},manualUntil:0,moving:false,autoTimer:0,AUTO_INTERVAL:Number(src.match(/AUTO_INTERVAL=(\d+)/)[1]),MANUAL_IDLE:8000,Date:{now:()=>clock},setTimeout:(fn,ms)=>{timers.set(++serial,{at:clock+ms,fn});return serial;},clearTimeout:id=>timers.delete(id),change:()=>{changes.push(clock);ctx.scheduleAuto();}};
+const ctx={route:'home',previewState:{index:null},hoveredObject:null,document:{hidden:false},heroVisible:true,reduceMotion:{matches:false},manualUntil:0,moving:false,autoTimer:0,AUTO_INTERVAL:Number(src.match(/AUTO_INTERVAL=(\d+)/)[1]),MANUAL_IDLE:8000,Date:{now:()=>clock},setTimeout:(fn,ms)=>{timers.set(++serial,{at:clock+ms,fn});return serial;},clearTimeout:id=>timers.delete(id),change:()=>{changes.push(clock);ctx.scheduleAuto();}};
 assert.equal(ctx.AUTO_INTERVAL,2000);
 vm.createContext(ctx);vm.runInContext(code,ctx);
 function advance(end){while(true){const next=[...timers].sort((a,b)=>a[1].at-b[1].at)[0];if(!next||next[1].at>end)break;clock=next[1].at;timers.delete(next[0]);next[1].fn();}clock=end;}
@@ -28,9 +28,7 @@ ctx.reduceMotion.matches=false;ctx.hoveredObject={isConnected:true};ctx.schedule
 console.log('Alpha hit area, contain letterbox, bounds, alpha threshold and hover pause passed.');
 
 
-ctx.hoveredObject=null;ctx.route='p5';ctx.scheduleAuto();const beforeDetail=changes.length;advance(32000);assert.equal(changes.length,beforeDetail+1,'detail hero uses the same autoplay interval');
-ctx.heroVisible=false;ctx.scheduleAuto();advance(40000);assert.equal(changes.length,beforeDetail+1,'reading a detail pauses the hero');
-const changeCode=src.slice(src.indexOf('function change('),src.indexOf('// Map viewport coordinates'));
-let detailSyncs=0;const stageMock={querySelectorAll:()=>[]};const changeCtx={route:'p5',selected:4,moving:false,document:{querySelector:()=>stageMock},manualActivity(){},settleObjects(){},refreshProjectLink(){},storeHome(){},syncSelectedDetail(){detailSyncs++},setTimeout:()=>1,settleObjects(){},reduceMotion:{matches:false},MOVE_DURATION:650,scheduleAuto(){}};
-vm.createContext(changeCtx);vm.runInContext(changeCode,changeCtx);changeCtx.change(1,false);assert.equal(changeCtx.selected,0);assert.equal(detailSyncs,0,'automatic rotation preserves the detail article');changeCtx.moving=false;changeCtx.change(1,true);assert.equal(detailSyncs,1,'only explicit selection switches the detail');
-console.log('Detail autoplay, offscreen pause and explicit-only article switching passed.');
+ctx.hoveredObject=null;ctx.route='p5';ctx.scheduleAuto();const beforeDetail=changes.length;advance(40000);assert.equal(changes.length,beforeDetail,'the personal detail has no carousel');
+ctx.route='home';ctx.previewState.index=2;ctx.scheduleAuto();advance(50000);assert.equal(changes.length,beforeDetail,'open previews pause the carousel');
+ctx.previewState.index=null;ctx.scheduleAuto();advance(52000);assert.equal(changes.length,beforeDetail+1,'closing the preview resumes the carousel');
+console.log('Personal-detail isolation and preview pause/resume passed.');

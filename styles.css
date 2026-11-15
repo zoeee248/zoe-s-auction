@@ -5280,7 +5280,7 @@ nav {
 @media(min-width:801px) {
  .hero {
   --light-rgb:255,205,112;
-  --beam-strength:.25;
+  --beam-strength:.38;
   --pool-strength:.66;
   --contact-strength:.64;
   --cast-strength:.28;
@@ -6022,3 +6022,94 @@ nav .opening-link {
 }
 
 
+
+/* R14 — programme previews, topic labels and a personal admission ticket. */
+@font-face{font-family:'Meet Zoe Script';src:url('fonts/KaushanScript-MeetZoe.woff') format('woff');font-style:normal;font-weight:400;font-display:swap}
+:root{--preview-surface:rgb(38 33 28 / .72);--preview-blur:12px;--ticket-paper:#fff2d3}
+.hero .project-link{font-family:var(--body-font);padding:0;background:none;border:0;color:var(--ink);cursor:pointer}
+.hero .scroll-cue{font-size:20px}
+.hero .object.is-previewed canvas{filter:drop-shadow(0 0 6px #ffc700a0) drop-shadow(0 0 16px #ffc70060)}
+.object-preview{position:fixed;z-index:110;width:min(420px,calc(100vw - 40px));padding:20px 24px;color:#fff4d6;background:var(--preview-surface);backdrop-filter:blur(var(--preview-blur));-webkit-backdrop-filter:blur(var(--preview-blur));border:1px solid #fff2;border-radius:6px;box-shadow:0 10px 40px #0002;font:400 17px/1.65 var(--body-font);cursor:default;animation:preview-enter 240ms var(--motion);touch-action:pan-y}
+.object-preview[hidden]{display:none!important}
+.object-preview p{font:inherit;margin:0}.object-preview p+p{margin-top:8px}.object-preview strong{font-weight:600;color:#fff6dd}.preview-about{display:inline-flex;align-items:center;gap:12px;color:#ffc700;font-weight:500;text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:1px;margin-top:16px;padding:4px 0}
+@keyframes preview-enter{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.work-panel>h3{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 14px}.work-title-text{min-width:0}.work-tag{display:inline-block;flex:none;background:rgb(255 231 156 / .74);color:#24221f;font:400 20px/1.5 var(--body-font);padding:3px 12px;border-radius:8px;white-space:nowrap;vertical-align:middle}
+.yellow-parenthesis{color:#ffc700;font-weight:600;font-size:1.12em}
+.about-only-route .detail{padding-top:96px}.about-only-route .detail .sheet{padding-top:32px}.about-only-route .detail-heading{position:static}
+#about.about-section{padding-block:96px 32px;min-height:0}
+#about>.section-grid{height:auto;min-height:0;align-items:stretch}
+#about .chapter-side{height:auto;min-height:0}
+#about .chapter-side .chapter-intro{font-family:var(--body-font);font-size:16px;line-height:28px;margin-top:auto;margin-bottom:0;padding-top:32px;padding-bottom:40px;max-width:none}
+#about .about-content{padding:0;min-width:0}
+.about-ticket{position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(0,1fr) clamp(170px,18vw,250px);grid-template-rows:auto 1fr auto;gap:24px 32px;min-height:470px;padding:36px 40px 40px;color:#292622;background:var(--ticket-paper);border-radius:3px;overflow:visible;font-family:var(--body-font)}
+.about-ticket:before,.about-ticket:after{content:'';position:absolute;top:47%;width:24px;height:40px;background:var(--paper,#353131);border-radius:50%;pointer-events:none;transform:translateY(-50%)}
+.about-ticket:before{left:-12px}.about-ticket:after{right:-12px}
+.ticket-copy{grid-column:1;grid-row:1/3;min-width:0;align-self:start}
+#about .meet-zoe{font:400 clamp(64px,7.5vw,132px)/1.15 'Meet Zoe Script',cursive;letter-spacing:-.045em;color:#292622;margin:0 0 24px;white-space:nowrap}
+#about .ticket-intro{font:400 clamp(18px,1.7vw,26px)/1.8 var(--hand-font);margin:0;text-wrap:pretty;max-width:580px}
+.ticket-portrait{grid-column:2;grid-row:1/3;width:100%;height:auto;max-height:285px;aspect-ratio:1078/1219;object-fit:contain;object-position:right top;border-radius:10px;display:block;align-self:start}
+.ticket-contact{grid-column:1;grid-row:3;display:flex;gap:20px;align-items:end;min-width:0;font-family:var(--body-font)}
+.ticket-contact>div{min-width:0}.ticket-contact a{display:block;color:#292622;font-size:18px;line-height:28px;text-decoration:none;overflow-wrap:anywhere}.ticket-contact a:hover{text-decoration:underline;text-underline-offset:4px}
+.ticket-qr{width:72px;height:72px;flex:none;background:none;border:0;padding:0;cursor:zoom-in}.ticket-qr img{display:block;width:72px;height:72px;filter:url(#qr-alpha-r9);mix-blend-mode:multiply}
+#about .about-button.ticket-button{grid-column:2;grid-row:3;align-self:end;justify-self:end;display:inline-flex;align-items:center;justify-content:flex-end;gap:20px;width:auto;max-width:none;min-width:0;margin:0;padding:0;border:0;border-radius:0;color:#ffc700;background:none;font:500 24px/28px var(--body-font);text-decoration:underline;text-underline-offset:7px;text-decoration-thickness:1px;transition:transform 300ms var(--motion);transform-origin:right bottom}
+/* A dark small backing is intentionally absent: the entry is a yellow underlined link. */
+#about .ticket-button span{color:inherit}#about .ticket-button.is-waving{animation:zoe-invite 800ms var(--motion) 1}
+#about .about-footer{margin-top:28px}#about .about-footer .back-to-top{color:var(--ink)}
+@media(hover:hover) and (pointer:fine){#about .about-button.ticket-button:hover{transform:scale(1.04);background:none}}
+@media(min-width:801px){#about .section-grid{grid-template-columns:var(--rail) minmax(0,1fr)}#about .rail-art{height:min(210px,24svh);margin-block:28px}#about .chapter-side .chapter-intro{white-space:normal}}
+@media(min-width:801px) and (max-width:1150px){.about-ticket{padding:28px;gap:24px;min-height:430px;grid-template-columns:minmax(0,1fr) 170px}#about .meet-zoe{font-size:72px}.ticket-contact{gap:12px}.ticket-contact a{font-size:15px}.ticket-qr,.ticket-qr img{width:56px;height:56px}#about .chapter-side .chapter-intro{padding-bottom:28px}#about .about-button.ticket-button{font-size:20px;gap:12px}}
+@media(max-width:800px){
+ .hero .scroll-cue{font-size:17px}.object-preview{width:min(340px,calc(100vw - 32px));padding:16px 20px;font-size:16px}
+ .work-panel>h3{gap:8px 10px}.work-tag{font-size:17px;padding:2px 10px}.about-only-route .detail{padding-top:76px}.about-only-route .detail .sheet{padding-top:20px}
+ .detail .about-biography p,.detail .about-biography li{text-wrap:wrap;text-align:justify;text-align-last:left}
+ #about.about-section{padding-block:64px 28px}#about .chapter-side{display:grid;height:auto;min-height:0}#about .chapter-side .chapter-intro{padding:12px 0 0;margin:0;font-size:14px;line-height:24px;white-space:normal}
+ #about .about-content{margin-top:32px}.about-ticket{grid-template-columns:minmax(0,1fr) 110px;grid-template-rows:auto auto auto;gap:24px 12px;padding:28px 24px;min-height:0}
+ .ticket-copy{grid-column:1/3;grid-row:1}.ticket-portrait{grid-column:2;grid-row:2;max-height:140px;align-self:end}#about .meet-zoe{font-size:clamp(56px,16vw,88px);margin-bottom:20px}#about .ticket-intro{font-size:20px;line-height:1.7}
+ .ticket-contact{grid-column:1/3;grid-row:3;gap:16px}.ticket-contact a{font-size:14px;line-height:26px}.ticket-qr,.ticket-qr img{width:60px;height:60px}#about .about-button.ticket-button{grid-column:1;grid-row:2;justify-self:start;align-self:end;font-size:20px;line-height:28px;gap:12px;margin-bottom:4px}.about-ticket:before,.about-ticket:after{width:20px;height:32px}.about-ticket:before{left:-10px}.about-ticket:after{right:-10px}
+}
+@media(prefers-reduced-motion:reduce){.object-preview{animation:none}#about .ticket-button.is-waving,#about .about-button.ticket-button:hover{animation:none;transform:none;transition:none}}
+/* Align the ticket's final text row with the chapter sign-off. */
+#about.about-section{height:auto;min-height:100svh;display:flex;flex-direction:column;justify-content:center}
+#about>.section-grid{flex:0 0 auto}
+.about-ticket:before,.about-ticket:after{background:var(--ground)}
+.ticket-qr img{filter:url(#qr-alpha-r9) brightness(.28)}
+#about .about-button.ticket-button{color:#292622}
+@media(min-width:801px){#about .about-content{padding-top:80px}#about .chapter-side{height:100%}}
+@media(max-width:800px){#about.about-section{height:auto;min-height:0;display:block}#about .about-content{padding-top:0}}
+
+/* R15: centered-object previews and the unframed Meet Zoe ending. */
+:root{--preview-surface:rgb(38 33 28 / .60);--preview-blur:0px}
+.object-preview{border:0;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;padding:22px 24px}
+.preview-close{position:absolute;top:5px;right:5px;display:flex;align-items:center;justify-content:center;width:28px;height:28px;padding:0;border:0;background:none;color:#fff3d6;font:400 18px/1 var(--body-font);opacity:.75;border-radius:2px;cursor:pointer}
+.preview-close:hover,.preview-close:focus-visible{opacity:1;background:#fff1}
+.object-preview .preview-kicker{font-size:15px;line-height:1.5}
+.object-preview .preview-title{font-size:20px;line-height:1.4;margin:0}
+.preview-heading{display:flex;align-items:baseline;flex-wrap:wrap;gap:8px 12px;padding-right:12px}
+.object-preview .preview-heading p{margin:0}
+.object-preview .preview-heading+p,.object-preview .preview-title+p{margin-top:12px}
+.work-panel>h3{display:block}
+.work-title-text{display:inline}
+.work-title-tail{display:inline-block;white-space:nowrap}
+.work-tag{font-size:var(--work-body-size,17px);line-height:1.45;padding:2px 10px;margin-left:10px;border-radius:6px;background:var(--ink);color:#24221f;font-weight:400;vertical-align:.1em}
+#about .about-ticket{background:none;border:0;border-radius:0;box-shadow:none;padding:0;min-height:470px;color:var(--ink);width:100%;max-width:880px;grid-template-columns:minmax(0,1fr) clamp(190px,20vw,280px);column-gap:32px}
+.about-ticket:before,.about-ticket:after{display:none;content:none}
+#about .meet-zoe{color:var(--ink)}
+#about .ticket-intro{color:var(--ink)}
+#about .ticket-contact a{color:var(--ink)}
+#about .chapter-side .chapter-intro{padding-bottom:0}
+.ticket-qr img{filter:url(#qr-alpha-r9);mix-blend-mode:normal}
+#about .about-button.ticket-button{display:block;gap:0;color:#24221f;background:#ffc700;padding:8px 16px;text-decoration:underline;text-underline-offset:5px;border:0;line-height:1.45;white-space:nowrap}
+@media(max-width:800px){.object-preview{padding:20px}.object-preview .preview-title{font-size:18px}#about .about-ticket{padding:0;min-height:0}.work-tag{margin-left:8px}#about .about-button.ticket-button{margin-bottom:0}}
+
+/* R16: square portrait, compact ending, and plain translucent preview. */
+.ticket-portrait{width:100%;height:auto;max-height:none;aspect-ratio:1;object-fit:cover;object-position:center;border-radius:10px}
+@media(hover:hover) and (pointer:fine){#about .about-button.ticket-button:hover{background:#ffc700;transform:scale(1.04)}}
+@media(max-width:800px){
+ #about .about-ticket{max-width:none;grid-template-columns:minmax(0,1fr) 120px;column-gap:16px}
+ .ticket-portrait{max-height:none;width:120px;height:120px;aspect-ratio:1}
+ #about .about-button.ticket-button{font-size:18px;padding:8px 12px}
+ .object-preview .preview-title{font-size:20px}
+ .preview-heading{gap:6px 10px}
+}
+@media(max-width:360px){#about .about-ticket{grid-template-columns:minmax(0,1fr) 104px}.ticket-portrait{width:104px;height:104px}#about .about-button.ticket-button{font-size:16px;padding:8px}}
+@media(prefers-reduced-motion:reduce){#about .about-button.ticket-button:hover{transform:none}}
